@@ -18,7 +18,7 @@ class WeatherViewController: UIViewController {
 	var currentLongitude:	String = ""
 	var currentSelection:	String = ""
 	
-	
+	let baseURL = "https://api.darksky.net/forecast/"
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
