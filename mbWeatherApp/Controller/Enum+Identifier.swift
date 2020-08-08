@@ -9,12 +9,12 @@
 import UIKit
 
 // no stringy -> Cells
-enum Cell {
+enum CellIdentifier {
 	static let cityCell			= "CityIdentifierCell"
 }
 
 // no stringy -> Segue
-enum Segue {
+enum SegueIdentifier {
 	// from city to forecast type
 	static let forecastVC		= "ToForecastSegue"
 	
@@ -24,10 +24,18 @@ enum Segue {
 	static let weeklyForecast	= "ToWeeklyFoecast"
 }
 
+// stringly typed: switch VC
+enum ForecastSwitch {
+	// from staticlist
+	static let currentForecast	= "Current weather"
+	static let dailyForecast	= "24-hour Forecast"
+	static let weeklyForecast	= "7-day Forecast"
+}
+
 
 
 // a6e28ff5e884528d6ba481cd0c3ac017 api
-// https://api.darksky.net/forecast/a6e28ff5e884528d6ba481cd0c3ac017/50.0647,19.9450
+// 50.0647,19.9450
 
 
 

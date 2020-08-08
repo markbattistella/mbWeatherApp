@@ -149,24 +149,9 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uv1-Pj-TGT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNK-AY-59K">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1V-U8-V2T">
-                                                <rect key="frame" x="20" y="20" width="374" height="200"/>
-                                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="5X2-sP-dvF"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="d1V-U8-V2T" firstAttribute="leading" secondItem="fNK-AY-59K" secondAttribute="leading" constant="20" id="AmJ-ab-PLx"/>
-                                            <constraint firstAttribute="bottom" secondItem="d1V-U8-V2T" secondAttribute="bottom" constant="20" id="Mtv-3A-91i"/>
-                                            <constraint firstItem="d1V-U8-V2T" firstAttribute="top" secondItem="fNK-AY-59K" secondAttribute="top" constant="20" id="jRC-Qx-BdB"/>
-                                            <constraint firstAttribute="trailing" secondItem="d1V-U8-V2T" secondAttribute="trailing" constant="20" id="qBY-1w-OxL"/>
-                                        </constraints>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNK-AY-59K" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -189,9 +174,6 @@
                         <viewLayoutGuide key="safeArea" id="PZ2-H6-Ivb"/>
                     </view>
                     <navigationItem key="navigationItem" id="pzi-WI-Xxo"/>
-                    <connections>
-                        <outlet property="test" destination="d1V-U8-V2T" id="USh-gz-X9n"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZU-p9-fFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -202,8 +184,8 @@
             <objects>
                 <navigationController id="7iv-0u-Jxe" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VDW-je-2MQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="VDW-je-2MQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>

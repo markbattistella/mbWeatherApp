@@ -9,42 +9,45 @@
 import UIKit
 
 class WeatherViewController: UIViewController {
-
-	@IBOutlet weak var test: UIView!
+	
 	
 	//
 	var currentCity:		String = ""
 	var currentLatitude:	String = ""
 	var currentLongitude:	String = ""
 	var currentSelection:	String = ""
+
+	var weatherManager = WeatherManager()
 	
-	let baseURL = "https://api.darksky.net/forecast/"
-	
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 
+		let cityWeather = weatherManager.fetchWeather(latitude: currentLongitude, longitude: currentLatitude)
 		
-		switch currentSelection {
-			case "7-day Forecast":
-				test.backgroundColor = .cyan
-
-			case "Current weather":
-				test.backgroundColor = .red
-
-			case "24-hour Forecast":
-				test.backgroundColor = .green
-			
-			default:
-				test.backgroundColor = .clear
-
-		}
-
-	
-		print(currentCity)
-		print(currentLatitude)
-		print(currentLongitude)
-		print(currentSelection)
-
-	
+//		WeatherManager.parseJSON(<#T##self: WeatherManager##WeatherManager#>)
+		
+//		switch currentSelection {
+//			case ForecastSwitch.currentForecast:
+//				view.backgroundColor = .cyan
+//
+//				navigationItem.title = "Current forecast"
+//
+//			case ForecastSwitch.dailyForecast:
+//				navigationItem.title = "Today's forecast"
+//				view.backgroundColor = .red
+//
+//			case ForecastSwitch.weeklyForecast:
+//				navigationItem.title = "Weekly forecast"
+//				view.backgroundColor = .green
+//
+//			default:
+//				view.backgroundColor = .clear
+//
+//		}
 	}
+}
+
+
+extension WeatherViewController {
 }
