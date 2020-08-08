@@ -29,6 +29,8 @@ struct WeatherManager {
 		// 1. create url
 		if let url = URL(string: apiURL) {
 			
+			print(url)
+			
 			// 2. create a url session
 			let session = URLSession(configuration: .default)
 			
@@ -57,15 +59,11 @@ struct WeatherManager {
 		
 		do {
 			let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-			
-//			print(decodedData.currently.apparentTemperature)
-//			print(decodedData.daily.data[0].temperatureMax)
-			
-			//print(decodedData.hourly.data[0].apparentTemperature)
-			
-			
-			
-			
+
+
+			print(decodedData.hourly.data[0].temperature)
+
+
 		} catch {
 			print(error)
 		}

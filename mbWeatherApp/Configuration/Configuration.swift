@@ -8,12 +8,11 @@
 
 import Foundation
 
-struct API {
-	static let APIKey = "a6e28ff5e884528d6ba481cd0c3ac017"
-	static let BaseURL = URL(string: "https://api.darksky.net/forecast/")!
+struct DarkSkyAPI {
+	let base	= "https://api.darksky.net/forecast/"
+	let key		= "a6e28ff5e884528d6ba481cd0c3ac017"
 	
-	static var AuthenticatedBaseURL: URL {
-		return BaseURL.appendingPathComponent(APIKey)
+	func baseURL(longitude: String, latitude: String) -> String {
+		return "\(base)\(key)/\(longitude),\(latitude)?exclude=minutely,alerts,flags"
 	}
-
 }

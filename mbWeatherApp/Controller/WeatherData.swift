@@ -8,32 +8,53 @@
 
 import Foundation
 
-//struct WeatherData: Decodable {
-//	
-//	let currently:	WeatherItems
-//	let hourly:		WeatherHourly
-//	let daily:		WeatherDaily
-//}
-//
-//// the API currently -> 1 return(s)
-//struct WeatherItems: Decodable {
-//	let summary:				String
-//	let icon:					String
-//	let temperature:			Double
-//	let apparentTemperature:	Double
-//	let windBearing:			Int
-//	
-//	let temperatureMin:			Int?
-//	let temperatureMax:			Int?
-//}
-//
-//// the API hourly -> 49 return(s)
-//struct WeatherHourly: Decodable {
-//	let data: [WeatherItems]
-//}
-//
-//
-//// the API daily area -> 8 return(s)
-//struct WeatherDaily: Decodable {
-//	let data: [WeatherItems]
-//}
+struct WeatherData: Decodable {
+	
+	let currently:	Currently
+	let hourly:		Hourly
+	let daily:		Daily
+	
+	// baseline
+	struct Currently: Decodable {
+		// required
+		let time:					Int		// the date
+		let temperature:			Double	// current temperature (current scenario only)
+		let summary:				String	// weather description
+		let windBearing:			Int		// wind direction/bearing
+		let windSpeed:				Double	// wind speed
+		let icon:					String	// image representing the forecast
+	}
+	
+	// hourly data
+	struct Hourly: Decodable {
+		let data: [HourlyData]
+	}
+	
+		struct HourlyData: Decodable {
+			let time:				Int		// the date
+			let temperature:		Double	// current temperature (current scenario only)
+			let summary:			String	// weather description
+			let windBearing:		Int		// wind direction/bearing
+			let windSpeed:			Double	// wind speed
+			let icon:				String	// image representing the forecast
+		}
+	
+	
+	// daily data
+	struct Daily: Decodable {
+		let data: [DailyData]
+	}
+
+		struct DailyData: Decodable {
+			let time:				Int		// the date
+//			let temperature:		Double	// current temperature (current scenario only)
+			let summary:			String	// weather description
+			let windBearing:		Int		// wind direction/bearing
+			let windSpeed:			Double	// wind speed
+			let icon:				String	// image representing the forecast
+			
+			let temperatureHigh:	Double	// the high temp
+			let temperatureLow:		Double	// the low temp
+		}
+
+}

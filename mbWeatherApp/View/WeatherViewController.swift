@@ -25,7 +25,6 @@ class WeatherViewController: UIViewController {
 
 		let cityWeather = weatherManager.fetchWeather(latitude: currentLongitude, longitude: currentLatitude)
 		
-//		WeatherManager.parseJSON(<#T##self: WeatherManager##WeatherManager#>)
 		
 //		switch currentSelection {
 //			case ForecastSwitch.currentForecast:
