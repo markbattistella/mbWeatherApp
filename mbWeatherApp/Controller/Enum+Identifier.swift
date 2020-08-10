@@ -11,6 +11,7 @@ import UIKit
 // no stringy -> Cells
 enum CellIdentifier {
 	static let cityCell			= "CityIdentifierCell"
+	static let weatherCell		= "ForecastIdentifierCell"
 }
 
 // no stringy -> Segue
@@ -21,7 +22,7 @@ enum SegueIdentifier {
 	// from forecast type to view
 	static let currentForecast	= "ToCurrentForecast"
 	static let dailyForecast	= "ToDailyForecast"
-	static let weeklyForecast	= "ToWeeklyFoecast"
+	static let weeklyForecast	= "ToWeeklyForecast"
 }
 
 // stringly typed: switch VC
@@ -31,12 +32,6 @@ enum ForecastSwitch {
 	static let dailyForecast	= "24-hour Forecast"
 	static let weeklyForecast	= "7-day Forecast"
 }
-
-
-
-// a6e28ff5e884528d6ba481cd0c3ac017 api
-// 50.0647,19.9450
-
 
 
 

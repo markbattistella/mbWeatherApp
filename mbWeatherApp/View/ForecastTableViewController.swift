@@ -14,7 +14,7 @@ class ForecastTableViewController: UITableViewController {
 	var currentCity:		String = ""
 	var currentLatitude:	String = ""
 	var currentLongitude:	String = ""
-	
+		
 	// IB variables
 	@IBOutlet var tableLabelCollection: [UILabel]!
 
@@ -29,7 +29,7 @@ class ForecastTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		// set the destination VC
-		let WeatherViewController = segue.destination as! WeatherViewController
+		let WeatherTableViewController = segue.destination as! WeatherTableViewController
 		let indexPath = tableView.indexPathForSelectedRow!
 		
 		guard let selectedForecast = tableLabelCollection[indexPath.row].text else {
@@ -38,10 +38,11 @@ class ForecastTableViewController: UITableViewController {
 		}
 
 		// what to pass on
-		WeatherViewController.currentCity = currentCity
-		WeatherViewController.currentLatitude = currentLatitude
-		WeatherViewController.currentLongitude = currentLongitude
-		WeatherViewController.currentSelection = selectedForecast
+		WeatherTableViewController.currentCity		= currentCity
+		WeatherTableViewController.currentLatitude	= currentLatitude
+		WeatherTableViewController.currentLongitude	= currentLongitude
+		WeatherTableViewController.currentSelection	= selectedForecast
+		
 	}
 
 }

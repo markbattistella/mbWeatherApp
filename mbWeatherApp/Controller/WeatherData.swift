@@ -47,7 +47,6 @@ struct WeatherData: Decodable {
 
 		struct DailyData: Decodable {
 			let time:				Int		// the date
-//			let temperature:		Double	// current temperature (current scenario only)
 			let summary:			String	// weather description
 			let windBearing:		Int		// wind direction/bearing
 			let windSpeed:			Double	// wind speed
