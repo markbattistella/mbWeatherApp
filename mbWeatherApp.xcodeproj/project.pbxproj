@@ -87,10 +87,8 @@
 		A33FDE4A24DA78F8005F26B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A3DD47AB24D7DEB300691E44 /* CitiesTableViewController.swift */,
-				A3DD47B524D82B2000691E44 /* ForecastTableViewController.swift */,
-				A3E53FEB24DFD03900D8F091 /* WeatherTableViewCell.swift */,
-				A33910F524E0000F00DBA944 /* WeatherTableViewController.swift */,
+				A3188DB724D2A676001D8D94 /* Main.storyboard */,
+				A3188DBC24D2A677001D8D94 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,10 +96,10 @@
 		A33FDE4B24DA791E005F26B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A3DD47AD24D7DF4900691E44 /* City.swift */,
-				A3DD47AF24D7E07300691E44 /* Enum+Identifier.swift */,
-				A33FDE4D24DA7D5B005F26B3 /* WeatherManager.swift */,
-				A35D6E4524DD0E680017882B /* WeatherData.swift */,
+				A3DD47AB24D7DEB300691E44 /* CitiesTableViewController.swift */,
+				A3DD47B524D82B2000691E44 /* ForecastTableViewController.swift */,
+				A3E53FEB24DFD03900D8F091 /* WeatherTableViewCell.swift */,
+				A33910F524E0000F00DBA944 /* WeatherTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,8 +107,10 @@
 		A33FDE4C24DA7969005F26B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A3188DB724D2A676001D8D94 /* Main.storyboard */,
-				A3188DBC24D2A677001D8D94 /* LaunchScreen.storyboard */,
+				A3DD47AD24D7DF4900691E44 /* City.swift */,
+				A3DD47AF24D7E07300691E44 /* Enum+Identifier.swift */,
+				A33FDE4D24DA7D5B005F26B3 /* WeatherManager.swift */,
+				A35D6E4524DD0E680017882B /* WeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

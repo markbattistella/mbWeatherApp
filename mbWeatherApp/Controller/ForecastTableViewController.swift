@@ -32,7 +32,7 @@ class ForecastTableViewController: UITableViewController {
 		let WeatherTableViewController = segue.destination as! WeatherTableViewController
 		let indexPath = tableView.indexPathForSelectedRow!
 		
-		guard let selectedForecast = tableLabelCollection[indexPath.row].text else {
+		guard let selectedForecast = ForecastSwitch(rawValue: tableLabelCollection[indexPath.row].text!) else {
 			print("No static row label text!")
 			return
 		}

@@ -195,6 +195,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="forecastImage" destination="WiR-mb-4wW" id="YbD-Rq-kFs"/>
+                                    <outlet property="summaryLabel" destination="XlC-qM-jJe" id="4uQ-Zo-k5d"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

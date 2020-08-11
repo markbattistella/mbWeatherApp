@@ -13,6 +13,7 @@ class WeatherTableViewCell: UITableViewCell {
 	@IBOutlet weak var forecastImage: UIImageView!
 	
 	
+	@IBOutlet weak var summaryLabel: UILabel!
 	
 	
     override func awakeFromNib() {
