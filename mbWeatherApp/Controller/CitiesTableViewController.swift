@@ -53,7 +53,7 @@ class CitiesTableViewController: UITableViewController {
 	
 	// MARK: - Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == SegueIdentifier.forecastVC {
+		if segue.identifier == SegueIdentifier.forecastVC.rawValue {
 			let forecastTableViewController = segue.destination as! ForecastTableViewController
 			let indexPath = tableView.indexPathForSelectedRow!
 			let selectedCity = cities[indexPath.row]
@@ -82,7 +82,7 @@ extension CitiesTableViewController {
 	
 	// what to display on the label
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cityCell, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.cityCell.rawValue, for: indexPath)
 		
 		let city = cities[indexPath.row]
 		cell.textLabel?.text = city.name

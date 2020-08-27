@@ -17,7 +17,7 @@ struct WeatherData: Decodable {
 	// baseline
 	struct Currently: Decodable {
 		// required
-		let time:					Int		// the date
+		let time:					Double	// the date
 		let temperature:			Double	// current temperature (current scenario only)
 		let summary:				String	// weather description
 		let windBearing:			Int		// wind direction/bearing
@@ -31,7 +31,7 @@ struct WeatherData: Decodable {
 	}
 	
 		struct HourlyData: Decodable {
-			let time:				Int		// the date
+			let time:				Double	// the date
 			let temperature:		Double	// current temperature (current scenario only)
 			let summary:			String	// weather description
 			let windBearing:		Int		// wind direction/bearing
@@ -46,7 +46,7 @@ struct WeatherData: Decodable {
 	}
 
 		struct DailyData: Decodable {
-			let time:				Int		// the date
+			let time:				Double	// the date
 			let summary:			String	// weather description
 			let windBearing:		Int		// wind direction/bearing
 			let windSpeed:			Double	// wind speed
