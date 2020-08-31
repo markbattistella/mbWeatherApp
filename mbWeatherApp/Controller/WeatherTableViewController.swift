@@ -17,9 +17,10 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 	var currentSelection:	ForecastSwitch = .currentForecast
 	var weatherManager		= WeatherManager()
 	var weatherData: WeatherData?
-
+	
 	// IB: variable
 	@IBOutlet weak var navigationPin: UIBarButtonItem!
+	
 	
 	
 	
@@ -37,8 +38,38 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 		navigationItem.title = currentCity
 		
 		tableView.tableFooterView = UIView()
+		
+		updatePinnedButton()
 	}
-
+	
+	
+	
+	
+	@IBAction func pinnedCityForecastTapped(_ sender: Any) {
+		UserDefaults.standard.setValue(currentSelection.rawValue, forKey: "pinnedCitySelection")
+		
+		UserDefaults.standard.setValue(currentCity, forKey: "pinnedCityName")
+		UserDefaults.standard.setValue(currentLatitude, forKey: "pinnedCityLatitude")
+		UserDefaults.standard.setValue(currentLongitude, forKey: "pinnedCityLongitude")
+		updatePinnedButton()
+	}
+	
+	func updatePinnedButton() {
+		guard let foundForecastSelection = UserDefaults.standard.string(forKey: "pinnedCitySelection"),
+			let foundCityName = UserDefaults.standard.string(forKey: "pinnedCityName") else {
+				return
+		}
+		
+		if foundForecastSelection == currentSelection.rawValue && foundCityName == currentCity {
+			navigationPin.image = UIImage(systemName: "pin.fill")
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	// MARK: - Protocol stubs
 	
@@ -87,41 +118,48 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 		switch currentSelection {
 			case ForecastSwitch.currentForecast,
 				 ForecastSwitch.dailyForecast:
-//				if let data = weatherData?.currently {
+				//				if let data = weatherData?.currently {
 				if let data = weatherData?.hourly.data[indexPath.row] {
-
 					
 					
-//				if let data = weatherData?.hourly.data[indexPath.row] ?? weatherData?.currently {
-			
-				
-
-
+					
+					//				if let data = weatherData?.hourly.data[indexPath.row] ?? weatherData?.currently {
+					
+					
+					
+					
 					// icon
-//					print(data.icon)
+					//					print(data.icon)
 					
-					cell.apiIconString = data.icon
-	
+					//cell.apiIconString = data.icon
+					cell.forecastCellIconImage.image = UIImage(systemName: data.icon)
+					
+					
+					
 					// time
 					
 					cell.forecastCellTimeRecordedLabel.text = apiDateFormatter(apiDouble: data.time)
 					
 					
-					//cell.forecastCellTimeRecordedLabel.text = localDate
 					// temperature
+					
 					// summary
-					// windBearing
-					// windSpeed
-					
-					
 					cell.forecastCellSummaryLabel.text = data.summary
-				}
-
+					
+					// windBearing
+					cell.forecastCellWindBearingLabel.text = String(data.windBearing) + "°"
+					
+					// windSpeed
+					cell.forecastCellWindSpeedLabel.text = String(data.windSpeed) + "km/h"
+					
+					
+			}
+			
 			// weekly has highTemp-lowTemp
 			case ForecastSwitch.weeklyForecast:
 				if let data = weatherData?.daily.data[indexPath.row] {
 					cell.forecastCellSummaryLabel.text = data.summary
-				}
+			}
 		}
 		return cell
 	}
@@ -138,12 +176,16 @@ extension WeatherTableViewController {
 	func apiDateFormatter(apiDouble: Double) -> String {
 		let date = Date(timeIntervalSince1970: apiDouble)
 		let dateFormatter = DateFormatter()
-		dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
-		dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+		dateFormatter.timeStyle = DateFormatter.Style.short //Set time style
+		dateFormatter.dateStyle = DateFormatter.Style.short //Set date style
 		dateFormatter.timeZone = .current
 		let localDate = dateFormatter.string(from: date)
 		
 		return localDate
 	}
+	
+	
+	
+	
 	
 }

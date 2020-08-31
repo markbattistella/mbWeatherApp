@@ -14,10 +14,61 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-		guard let _ = (scene as? UIWindowScene) else { return }
+
+		guard let windowScene = (scene as? UIWindowScene) else { return }
+		
+		self.window = UIWindow(windowScene: windowScene)
+
+//		CitiesTableViewController
+//		ForecastTableViewController
+//		WeatherTableViewController
+		
+		
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+			guard let navigationController = storyboard.instantiateViewController(identifier: "NavigationController") as? UINavigationController else {
+			print("ViewController not found")
+			return
+		}
+
+		if let foundForecastSelection = UserDefaults.standard.string(forKey: "pinnedCitySelection"),
+			let foundForecastCity = UserDefaults.standard.string(forKey: "pinnedCityName"),
+			let foundForecastLatitude = UserDefaults.standard.string(forKey: "pinnedCityLatitude"),
+			let foundForecastLongitude = UserDefaults.standard.string(forKey: "pinnedCityLongitude") {
+
+			if let citiesVC = storyboard.instantiateViewController(identifier: "CitiesTableViewController") as? CitiesTableViewController,
+				let forecastVC = storyboard.instantiateViewController(identifier: "ForecastTableViewController") as? ForecastTableViewController,
+				let weatherVC = storyboard.instantiateViewController(identifier: "WeatherTableViewController") as? WeatherTableViewController {
+
+				let city = City(name: foundForecastCity, latitude: foundForecastLatitude, longitude: foundForecastLongitude)
+
+								
+				weatherVC.currentCity = city.name
+				weatherVC.currentLatitude = city.latitude
+				weatherVC.currentLongitude = city.longitude
+				
+				if foundForecastSelection == ForecastSwitch.currentForecast.rawValue {
+					weatherVC.currentSelection = .currentForecast
+				} else if foundForecastSelection == ForecastSwitch.dailyForecast.rawValue {
+					weatherVC.currentSelection = .dailyForecast
+				} else if foundForecastSelection == ForecastSwitch.weeklyForecast.rawValue {
+					weatherVC.currentSelection = .weeklyForecast
+				}
+
+				forecastVC.currentCity = city.name
+				forecastVC.currentLatitude = city.latitude
+				forecastVC.currentLongitude = city.longitude
+
+				navigationController.viewControllers = [citiesVC, forecastVC, weatherVC]
+			}
+		}
+
+		self.window?.rootViewController = navigationController
+		self.window?.makeKeyAndVisible()
+		
+		
+		
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
