@@ -12,6 +12,8 @@
 		A3188DB924D2A676001D8D94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3188DB724D2A676001D8D94 /* Main.storyboard */; };
 		A3188DBB24D2A677001D8D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3188DBA24D2A677001D8D94 /* Assets.xcassets */; };
 		A3188DBE24D2A677001D8D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3188DBC24D2A677001D8D94 /* LaunchScreen.storyboard */; };
+		A32A0FDF24FE55E4001C61B1 /* WeatherTableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A0FDE24FE55E4001C61B1 /* WeatherTableViewController+Extension.swift */; };
+		A32A0FE124FE563A001C61B1 /* CitiesTableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A0FE024FE563A001C61B1 /* CitiesTableViewController+Extension.swift */; };
 		A33910F624E0000F00DBA944 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33910F524E0000F00DBA944 /* WeatherTableViewController.swift */; };
 		A33FDE4E24DA7D5B005F26B3 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FDE4D24DA7D5B005F26B3 /* WeatherManager.swift */; };
 		A33FDE5124DA9826005F26B3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FDE5024DA9826005F26B3 /* Configuration.swift */; };
@@ -31,6 +33,8 @@
 		A3188DBA24D2A677001D8D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3188DBD24D2A677001D8D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3188DBF24D2A677001D8D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A32A0FDE24FE55E4001C61B1 /* WeatherTableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherTableViewController+Extension.swift"; sourceTree = "<group>"; };
+		A32A0FE024FE563A001C61B1 /* CitiesTableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CitiesTableViewController+Extension.swift"; sourceTree = "<group>"; };
 		A33910F524E0000F00DBA944 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		A33FDE4D24DA7D5B005F26B3 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		A33FDE5024DA9826005F26B3 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 			path = mbWeatherApp;
 			sourceTree = "<group>";
 		};
+		A32A0FDD24FE55B9001C61B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A32A0FDE24FE55E4001C61B1 /* WeatherTableViewController+Extension.swift */,
+				A32A0FE024FE563A001C61B1 /* CitiesTableViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A33FDE4A24DA78F8005F26B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 		A33FDE4B24DA791E005F26B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A32A0FDD24FE55B9001C61B1 /* Extensions */,
 				A3DD47AB24D7DEB300691E44 /* CitiesTableViewController.swift */,
 				A3DD47B524D82B2000691E44 /* ForecastTableViewController.swift */,
 				A3E53FEB24DFD03900D8F091 /* WeatherTableViewCell.swift */,
@@ -194,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32A0FDF24FE55E4001C61B1 /* WeatherTableViewController+Extension.swift in Sources */,
 				A33FDE4E24DA7D5B005F26B3 /* WeatherManager.swift in Sources */,
 				A3DD47B624D82B2000691E44 /* ForecastTableViewController.swift in Sources */,
 				A33910F624E0000F00DBA944 /* WeatherTableViewController.swift in Sources */,
@@ -204,6 +219,7 @@
 				A3188DB424D2A676001D8D94 /* SceneDelegate.swift in Sources */,
 				A35D6E4624DD0E680017882B /* WeatherData.swift in Sources */,
 				A3DD47AE24D7DF4900691E44 /* City.swift in Sources */,
+				A32A0FE124FE563A001C61B1 /* CitiesTableViewController+Extension.swift in Sources */,
 				A3DD47AC24D7DEB300691E44 /* CitiesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

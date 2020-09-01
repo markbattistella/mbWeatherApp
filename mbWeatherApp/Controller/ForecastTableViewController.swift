@@ -9,22 +9,22 @@
 import UIKit
 
 class ForecastTableViewController: UITableViewController {
-
+	
 	// variables
 	var currentCity:		String = ""
 	var currentLatitude:	String = ""
 	var currentLongitude:	String = ""
-		
+	
 	// IB variables
 	@IBOutlet var tableLabelCollection: [UILabel]!
-
-
+	
+	
 	// just load the Storyboard
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 	}
-
-    
+	
+	
 	// MARK: - Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
@@ -36,7 +36,7 @@ class ForecastTableViewController: UITableViewController {
 			print("No static row label text!")
 			return
 		}
-
+		
 		// what to pass on
 		WeatherTableViewController.currentCity		= currentCity
 		WeatherTableViewController.currentLatitude	= currentLatitude
@@ -44,5 +44,5 @@ class ForecastTableViewController: UITableViewController {
 		WeatherTableViewController.currentSelection	= selectedForecast
 		
 	}
-
+	
 }

@@ -46,17 +46,17 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 	
 	
 	@IBAction func pinnedCityForecastTapped(_ sender: Any) {
-		UserDefaults.standard.setValue(currentSelection.rawValue, forKey: "pinnedCitySelection")
+		UserDefaults.standard.setValue(currentSelection.rawValue, forKey: Keys.pinnedCitySelection.rawValue)
 		
-		UserDefaults.standard.setValue(currentCity, forKey: "pinnedCityName")
-		UserDefaults.standard.setValue(currentLatitude, forKey: "pinnedCityLatitude")
-		UserDefaults.standard.setValue(currentLongitude, forKey: "pinnedCityLongitude")
+		UserDefaults.standard.setValue(currentCity, forKey: Keys.pinnedCityName.rawValue)
+		UserDefaults.standard.setValue(currentLatitude, forKey: Keys.pinnedCityLatitude.rawValue)
+		UserDefaults.standard.setValue(currentLongitude, forKey: Keys.pinnedCityLongitude.rawValue)
 		updatePinnedButton()
 	}
 	
 	func updatePinnedButton() {
-		guard let foundForecastSelection = UserDefaults.standard.string(forKey: "pinnedCitySelection"),
-			let foundCityName = UserDefaults.standard.string(forKey: "pinnedCityName") else {
+		guard let foundForecastSelection = UserDefaults.standard.string(forKey: Keys.pinnedCitySelection.rawValue),
+			let foundCityName = UserDefaults.standard.string(forKey: Keys.pinnedCityName.rawValue) else {
 				return
 		}
 		
@@ -65,12 +65,7 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	// MARK: - Protocol stubs
 	
 	// return the data
@@ -116,30 +111,16 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 		}
 		
 		switch currentSelection {
-			case ForecastSwitch.currentForecast,
-				 ForecastSwitch.dailyForecast:
-				//				if let data = weatherData?.currently {
-				if let data = weatherData?.hourly.data[indexPath.row] {
-					
-					
-					
-					//				if let data = weatherData?.hourly.data[indexPath.row] ?? weatherData?.currently {
-					
-					
-					
-					
+			
+			// .current forecast
+			case ForecastSwitch.currentForecast:
+				if let data = weatherData?.currently {
+
 					// icon
-					//					print(data.icon)
-					
-					//cell.apiIconString = data.icon
-					cell.forecastCellIconImage.image = UIImage(systemName: data.icon)
-					
-					
+					cell.forecastCellIconImage.image = apiIconToImage(apiImage: data.icon)
 					
 					// time
-					
 					cell.forecastCellTimeRecordedLabel.text = apiDateFormatter(apiDouble: data.time)
-					
 					
 					// temperature
 					
@@ -151,11 +132,32 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 					
 					// windSpeed
 					cell.forecastCellWindSpeedLabel.text = String(data.windSpeed) + "km/h"
+			}
+
+			// .daily forecast
+			case ForecastSwitch.dailyForecast:
+				if let data = weatherData?.hourly.data[indexPath.row] {
+
+					// icon
+					cell.forecastCellIconImage.image = apiIconToImage(apiImage: data.icon)
+
+					// time
+					cell.forecastCellTimeRecordedLabel.text = apiDateFormatter(apiDouble: data.time)
+
+					// temperature
 					
+					// summary
+					cell.forecastCellSummaryLabel.text = data.summary
 					
+					// windBearing
+					cell.forecastCellWindBearingLabel.text = String(data.windBearing) + "°"
+					
+					// windSpeed
+					cell.forecastCellWindSpeedLabel.text = String(data.windSpeed) + "km/h"
+
 			}
 			
-			// weekly has highTemp-lowTemp
+			// .weekly forecast
 			case ForecastSwitch.weeklyForecast:
 				if let data = weatherData?.daily.data[indexPath.row] {
 					cell.forecastCellSummaryLabel.text = data.summary
@@ -168,24 +170,4 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 180
 	}
-}
-
-// functions
-extension WeatherTableViewController {
-	
-	func apiDateFormatter(apiDouble: Double) -> String {
-		let date = Date(timeIntervalSince1970: apiDouble)
-		let dateFormatter = DateFormatter()
-		dateFormatter.timeStyle = DateFormatter.Style.short //Set time style
-		dateFormatter.dateStyle = DateFormatter.Style.short //Set date style
-		dateFormatter.timeZone = .current
-		let localDate = dateFormatter.string(from: date)
-		
-		return localDate
-	}
-	
-	
-	
-	
-	
 }

@@ -8,13 +8,13 @@
 
 import UIKit
 
-// no stringy -> Cells
+// stringy: Cell Identifier
 enum CellIdentifier: String {
 	case cityCell			= "CityIdentifierCell"
 	case weatherCell		= "ForecastIdentifierCell"
 }
 
-// no stringy -> Segue
+// stringy: Segue ID
 enum SegueIdentifier: String {
 	// from city to forecast type
 	case forecastVC			= "ToForecastSegue"
@@ -25,10 +25,26 @@ enum SegueIdentifier: String {
 	case weeklyForecast		= "ToWeeklyForecast"
 }
 
-// stringly typed: switch VC
+// stringly: switch view
 enum ForecastSwitch: String {
 	// from staticlist
 	case currentForecast	= "Current weather"
 	case dailyForecast		= "24-hour Forecast"
 	case weeklyForecast		= "7-day Forecast"
+}
+
+// stringly: Storyboard View Controller ID
+enum ViewControllers: String {
+	case navigationViewController		= "NavigationController"
+	case citiesTableViewController		= "CitiesTableViewController"
+	case forecastTableViewController	= "ForecastTableViewController"
+	case weatherTableViewController		= "WeatherTableViewController"
+}
+
+// stringly: User Defaults
+enum Keys: String {
+	case pinnedCitySelection	= "pinnedCitySelection"
+	case pinnedCityName			= "pinnedCityName"
+	case pinnedCityLatitude		= "pinnedCityLatitude"
+	case pinnedCityLongitude	= "pinnedCityLongitude"	
 }
