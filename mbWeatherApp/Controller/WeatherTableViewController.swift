@@ -16,7 +16,7 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 	var currentLongitude:	String	= ""
 	var currentSelection:	ForecastSwitch = .currentForecast
 	var weatherManager		= WeatherManager()
-	var weatherData: WeatherData?
+	var weatherData:		WeatherData?
 	
 	// IB: variable
 	@IBOutlet weak var navigationPin: UIBarButtonItem!
@@ -65,7 +65,7 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 		}
 	}
 	
-
+	
 	// MARK: - Protocol stubs
 	
 	// return the data
@@ -110,12 +110,19 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 			fatalError("Could not dequeue a cell")
 		}
 		
+		// hide all elements
+		cell.forecastCellTemperatureLabel.isHidden		= true
+		cell.forecastCellTemperatureLowLabel.isHidden	= true
+		cell.forecastCellTemperatureHighLabel.isHidden	= true
+		
+		
+		
 		switch currentSelection {
 			
 			// .current forecast
 			case ForecastSwitch.currentForecast:
 				if let data = weatherData?.currently {
-
+					
 					// icon
 					cell.forecastCellIconImage.image = apiIconToImage(apiImage: data.icon)
 					
@@ -123,44 +130,72 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 					cell.forecastCellTimeRecordedLabel.text = apiDateFormatter(apiDouble: data.time)
 					
 					// temperature
+					cell.forecastCellTemperatureLabel.text = String(data.temperature) + "°C"
+					cell.forecastCellTemperatureLabel.isHidden = false
+					cell.forecastCellTemperatureLowLabel.isHidden = true
+					cell.forecastCellTemperatureHighLabel.isHidden = true
 					
 					// summary
 					cell.forecastCellSummaryLabel.text = data.summary
 					
 					// windBearing
-					cell.forecastCellWindBearingLabel.text = String(data.windBearing) + "°"
+					cell.forecastCellWindBearingLabel.text =  "Wind direction: " +  String(data.windBearing) + "°"
 					
 					// windSpeed
-					cell.forecastCellWindSpeedLabel.text = String(data.windSpeed) + "km/h"
+					cell.forecastCellWindSpeedLabel.text = "Wind speed: " + String(data.windSpeed) + "km/h"
 			}
-
+			
 			// .daily forecast
 			case ForecastSwitch.dailyForecast:
 				if let data = weatherData?.hourly.data[indexPath.row] {
-
+					
 					// icon
 					cell.forecastCellIconImage.image = apiIconToImage(apiImage: data.icon)
-
+					
 					// time
 					cell.forecastCellTimeRecordedLabel.text = apiDateFormatter(apiDouble: data.time)
-
+					
 					// temperature
+					cell.forecastCellTemperatureLabel.text = String(data.temperature) + "°C"
+					cell.forecastCellTemperatureLabel.isHidden = false
+					cell.forecastCellTemperatureLowLabel.isHidden = true
+					cell.forecastCellTemperatureHighLabel.isHidden = true
 					
 					// summary
 					cell.forecastCellSummaryLabel.text = data.summary
 					
 					// windBearing
-					cell.forecastCellWindBearingLabel.text = String(data.windBearing) + "°"
+					cell.forecastCellWindBearingLabel.text = "Wind direction: " + String(data.windBearing) + "°"
 					
 					// windSpeed
-					cell.forecastCellWindSpeedLabel.text = String(data.windSpeed) + "km/h"
-
+					cell.forecastCellWindSpeedLabel.text = "Wind speed: " + String(data.windSpeed) + " km/h"
+					
 			}
 			
 			// .weekly forecast
 			case ForecastSwitch.weeklyForecast:
 				if let data = weatherData?.daily.data[indexPath.row] {
+					
+					// icon
+					cell.forecastCellIconImage.image = apiIconToImage(apiImage: data.icon)
+					
+					// time
+					cell.forecastCellTimeRecordedLabel.text = apiDateFormatter(apiDouble: data.time)
+					
+					// temperature
+					cell.forecastCellTemperatureLabel.isHidden = true
+					cell.forecastCellTemperatureLowLabel.isHidden = false
+					cell.forecastCellTemperatureHighLabel.isHidden = false
+					cell.forecastCellTemperatureLowLabel.text = "L: " + String(data.temperatureLow) + "°C"
+					cell.forecastCellTemperatureHighLabel.text = "H: " + String(data.temperatureHigh) + "°C"
+					// summary
 					cell.forecastCellSummaryLabel.text = data.summary
+					
+					// windBearing
+					cell.forecastCellWindBearingLabel.text = "Wind direction: " + String(data.windBearing) + "°"
+					
+					// windSpeed
+					cell.forecastCellWindSpeedLabel.text = "Wind speed: " + String(data.windSpeed) + " km/h"
 			}
 		}
 		return cell
@@ -168,6 +203,6 @@ class WeatherTableViewController: UITableViewController, WeatherManagerDelegate 
 	
 	// fixed row sizing
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 180
+		return 156
 	}
 }
